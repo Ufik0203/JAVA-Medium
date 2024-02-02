@@ -19,7 +19,7 @@ public class Medium1Arraylist {
     
     private void ArrLstA() {
         Scanner scan = new Scanner(System.in);
-        ArrayList<String> daftarNama = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
 
         System.out.print("Masukkan panjang Arraylist : ");
         int a = scan.nextInt();
@@ -28,34 +28,119 @@ public class Medium1Arraylist {
         for (int i = 0; i < a; i++) {
             System.out.print("Masukkan isi/elemen Arraylist ke " + i + " : ");
             String elemen = scan.nextLine();
-            daftarNama.add(elemen);
+            list.add(elemen);
         }
         
         System.out.println("\nDaftar Nama:");   // Menampilkan elemen-elemen dalam ArrayList
-        for (String nama : daftarNama) {
+        for (String nama : list) {
             System.out.println(nama);
         }
        
-        System.out.println("\nElemen ke-2: " + daftarNama.get(1));   // Mengakses elemen berdasarkan indeks
+        System.out.println("\nElemen ke-2: " + list.get(1));   // Mengakses elemen berdasarkan indeks
         
-        daftarNama.remove(0);
+        list.remove(0);
         System.out.println("\nSetelah menghapus elemen ke-1:");   // Menghapus elemen berdasarkan indeks
-        for (String nama : daftarNama) {
+        for (String nama : list) {
             System.out.println(nama);
         }
 
-        System.out.println("Ukuran ArrayList: " + daftarNama.size());   // Menentukan ukuran ArrayList
+        System.out.println("Ukuran ArrayList: " + list.size());   // Menentukan ukuran ArrayList
 
         
-        System.out.println("Apakah ArrayList kosong? " + daftarNama.isEmpty());   // Mengecek apakah ArrayList kosong
+        System.out.println("Apakah ArrayList kosong? " + list.isEmpty());   // Mengecek apakah ArrayList kosong
     }
     
     private void ArrLstB() {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<String> list = new ArrayList<>(1);
+        int c,d,e,f;
         
+        System.out.print("Masukkan panjang Arraylist : ");
+        int a = scan.nextInt();
+        scan.nextLine();
+        
+        for (int i = 1; i <= a; i++) {
+            System.out.print("Masukkan isi/elemen Arraylist ke " + i + " : ");
+            String elemen = scan.nextLine();
+            list.add(elemen);
+        }
+        
+        System.out.println("\nIsi/elemen Arraylist : ");
+            for (String var : list) {
+                System.out.println(var);
+            }
+            
+        System.out.println("\nIngin menampilkan berserta nomer Indeks ? ");
+        System.out.println("1. Ya");
+        System.out.println("2. Tidak");
+        e = scan.nextInt();
+        switch(e) {
+            case 1:
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println("Indeks ke-" + (i + 1) + " = " + list.get(i));
+                }
+                break;
+            case 2:
+                break;
+            default:
+                System.out.println("Inputan tidak valid");
+                break;
+        }
+        
+        boolean b = true;
+        System.out.println("\nApakah ingin menghapus elemen ?");
+        System.out.println("1. Ya");
+        System.out.println("2. Tidak");
+        c = scan.nextInt();
+        while(b) {
+            switch (c) {
+                case 1:
+                    System.out.println("\nElemen keberapa yang ingin anda hapus ?");
+                    d = scan.nextInt();
+                    if (d >= 1 && d <=  list.size()) {
+                        list.remove(d - 1);
+                    } else {
+                        System.out.println("Out of range");
+                        b = false;
+                        break;
+                    }
+                    System.out.println("\nIsi/elemen Arraylist setelah hapus : ");
+                    for (String var : list) {
+                        System.out.println(var);
+                    }
+                    System.out.println("\nApakah anda ingin menghapus lagi ?");
+                    System.out.println("1. Ya");
+                    System.out.println("2. Tidak");
+                    e = scan.nextInt();
+                    scan.nextLine();
+                    
+                    switch (e) {
+                        case 1:
+                            c = 1;
+                            break;
+                        case 2:
+                            b = false;
+                            break;
+                        default:
+                            System.out.println("Inputan tidak valid");
+                            break;
+                    }
+                    
+                    break;
+                case 2:
+                    System.out.println("Terima kasih");
+                    b = false;
+                    break;
+                default:
+                    System.out.println("Inputan tidak valid");
+                    break;
+            }
+        }
     }
     
     public static void main(String[] args) {
         Medium1Arraylist obj = new Medium1Arraylist();
         obj.ArrLstA();
+        obj.ArrLstB();
     }
 }
