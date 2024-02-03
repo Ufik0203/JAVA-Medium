@@ -36,10 +36,10 @@ public class Medium1Arraylist {
             System.out.println(nama);
         }
        
-        System.out.println("\nElemen ke-2: " + list.get(1));   // Mengakses elemen berdasarkan indeks
+        System.out.println("\nElemen ke-2: " + list.get(2));   // Mengakses elemen berdasarkan indeks
         
         list.remove(0);
-        System.out.println("\nSetelah menghapus elemen ke-1:");   // Menghapus elemen berdasarkan indeks
+        System.out.println("\nSetelah menghapus elemen ke-0:");   // Menghapus elemen berdasarkan indeks
         for (String nama : list) {
             System.out.println(nama);
         }
@@ -55,6 +55,7 @@ public class Medium1Arraylist {
         ArrayList<String> list = new ArrayList<>(1);
         int c,d,e,f;
         
+        System.out.println("\n\n====== New ======");
         System.out.print("Masukkan panjang Arraylist : ");
         int a = scan.nextInt();
         scan.nextLine();
@@ -70,7 +71,7 @@ public class Medium1Arraylist {
                 System.out.println(var);
             }
             
-        System.out.println("\nIngin menampilkan berserta nomer Indeks ? ");
+        System.out.println("\nIngin menampilkan berserta nomer Indeks ?");
         System.out.println("1. Ya");
         System.out.println("2. Tidak");
         e = scan.nextInt();
@@ -88,16 +89,19 @@ public class Medium1Arraylist {
         }
         
         boolean b = true;
-        System.out.println("\nApakah ingin menghapus elemen ?");
-        System.out.println("1. Ya");
-        System.out.println("2. Tidak");
-        c = scan.nextInt();
-        while(b) {
+        
+        do {
+            System.out.println("\nApakah ingin menghapus atau mengubah elemen ?");
+            System.out.println("1. Hapus");
+            System.out.println("2. Ubah");
+            System.out.println("3. Tidak");
+            c = scan.nextInt();
+
             switch (c) {
                 case 1:
                     System.out.println("\nElemen keberapa yang ingin anda hapus ?");
                     d = scan.nextInt();
-                    if (d >= 1 && d <=  list.size()) {
+                    if (d >= 1 && d <= list.size()) {
                         list.remove(d - 1);
                     } else {
                         System.out.println("Out of range");
@@ -113,21 +117,35 @@ public class Medium1Arraylist {
                     System.out.println("2. Tidak");
                     e = scan.nextInt();
                     scan.nextLine();
-                    
+
                     switch (e) {
                         case 1:
                             c = 1;
                             break;
                         case 2:
-                            b = false;
+                            c = 0;
                             break;
                         default:
                             System.out.println("Inputan tidak valid");
                             break;
                     }
-                    
+
                     break;
                 case 2:
+                    System.out.println("Elemen keberapa yang ingin anda hapus ?");
+                    f = scan.nextInt();
+                    scan.nextLine();
+                    System.out.print("\nMasukkan inputan ubah : ");
+                    String ubah = scan.nextLine();
+                    list.set((f - 1), ubah);
+                    
+                    System.out.println("Isi ArrayList setelah update : ");
+                    for (int i = 0; i < list.size(); i++) {
+                        System.out.println("Indeks ke-" + (i+1) + " : " + list.get(i));
+                    }
+                    
+                    break;
+                case 3:
                     System.out.println("Terima kasih");
                     b = false;
                     break;
@@ -135,7 +153,7 @@ public class Medium1Arraylist {
                     System.out.println("Inputan tidak valid");
                     break;
             }
-        }
+        } while (b);
     }
     
     public static void main(String[] args) {
