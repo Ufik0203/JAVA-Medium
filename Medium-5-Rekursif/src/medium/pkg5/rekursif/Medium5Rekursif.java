@@ -76,7 +76,7 @@ public class Medium5Rekursif {
     public static void main(String[] args) {
         Medium5Rekursif obj = new Medium5Rekursif();
         
-        /*Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         int a,b,c;
         
         System.out.print("\nMasukkan nilai ke-1 : ");
@@ -86,7 +86,7 @@ public class Medium5Rekursif {
         b = scan.nextInt();
         
         c = tambah(a, b);
-        System.out.println("\nHasil nya adalah " + c);*/
+        System.out.println("\nHasil nya adalah " + c);
         
         obj.rks();
     }
